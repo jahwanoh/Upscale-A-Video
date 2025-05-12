@@ -22,7 +22,7 @@ COPY requirements.txt .
 
 # Install Python dependencies
 # Install torch compatible with CUDA 12.1 first
-RUN pip3 install --no-cache-dir torch==2.1.0+cu121 torchvision==0.16.0+cu121 torchaudio==2.1.0+cu121 --index-url https://download.pytorch.org/whl/cu121
+RUN pip3 install --no-cache-dir torch==2.0.1+cu121 torchvision==0.15.2+cu121 torchaudio==2.0.2+cu121 --index-url https://download.pytorch.org/whl/cu121
 # Install remaining requirements, filter out torch, torchvision and ffmpeg which are handled separately
 RUN grep -vE '^torch==|^torchvision|^ffmpeg==' requirements.txt > requirements_filtered.txt && \
     pip3 install --no-cache-dir -r requirements_filtered.txt && \
@@ -35,7 +35,7 @@ RUN grep -vE '^torch==|^torchvision|^ffmpeg==' requirements.txt > requirements_f
 COPY . .
 
 # Create directory for pretrained models (user needs to mount/copy models here)
-RUN mkdir -p pretrained_models/upscale_a_video
+# RUN mkdir -p pretrained_models/upscale_a_video
 
 # Expose any necessary ports (if applicable, none specified)
 # ENV PYTHONUNBUFFERED=1
