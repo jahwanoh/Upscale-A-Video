@@ -28,6 +28,14 @@ RUN grep -vE '^torch==|^torchvision|^ffmpeg==' requirements.txt > requirements_f
     pip3 install --no-cache-dir -r requirements_filtered.txt && \
     rm requirements_filtered.txt
 
+# Set Hugging Face cache directory to a location inside the container
+ENV TRANSFORMERS_CACHE=/app/hf_cache
+ENV HF_HOME=/app/hf_cache
+
+# Pre-download and cache transformers models
+RUN mkdir -p /app/hf_cache && \
+    python3 -c "from transformers import AutoTokenizer, AutoModel; AutoTokenizer.from_pretrained('openai/clip-vit-large-patch14'); AutoModel.from_pretrained('openai/clip-vit-large-patch14')"
+
 # pre-trained model download
 # RUN pip3 install gdown && gdown https://drive.google.com/uc?id=17-ZqLJ0gNJGqlO0Mu0Hyoi31fLp0dKWY
 

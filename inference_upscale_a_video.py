@@ -116,6 +116,8 @@ if __name__ == '__main__':
     pipeline.unet.load_state_dict(torch.load(pretrained_model, map_location="cpu"), strict=True)
     pipeline.unet = pipeline.unet.half()
     pipeline.unet.eval()
+    
+    #### how to pre-load in the docker image?
 
     # load scheduler
     pipeline.scheduler = DDIMScheduler.from_config("./pretrained_models/upscale_a_video/scheduler/scheduler_config.json")

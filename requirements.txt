@@ -4,6 +4,7 @@ accelerate==0.18.0
 av==9.1.0
 decord==0.6.0
 diffusers==0.16.0
+huggingface_hub==0.14.1
 einops>=0.6.1
 ffmpeg==1.4
 imageio==2.25.0

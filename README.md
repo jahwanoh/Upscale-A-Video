@@ -106,8 +106,7 @@
 ## ☕️ Quick Inference
 
 ```shell
-docker run --rm --gpus all -v /home/research/data:/mnt/data -v /home/research/model/upscale_a_video:/app/pretrained_models/upscale_a_video -v /home/research/output:/mnt/output upscale python3 inference_upscale_a_video.py
--i /mnt/data/pano_center_15.mp4 -o /mnt/output/uav 
+docker run --rm --gpus all -v /home/research/data:/mnt/data -v /home/research/model/upscale_a_video:/app/pretrained_models/upscale_a_video -v /home/research/output:/mnt/output upscale -c "python3 inference_upscale_a_video.py -i /mnt/data/pano_center_15.mp4 -o /mnt/output/uav"
 
 ```
 
